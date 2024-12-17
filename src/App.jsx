@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import WebgiViewer from "./components/WebgiViewer";
 import Page1 from "./components/Page1";
 import Page2 from "./components/Page2";
@@ -8,6 +8,38 @@ import Header from "./components/Header";
 import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
+  const [isModel, setIsModel] = useState(false);
+  const page1Ref = useRef();
+  const page2Ref = useRef();
+  const page3Ref = useRef();
+  const page4Ref = useRef();
+
+  window.addEventListener("scroll", (e) => {
+    const navLinks = document.querySelectorAll(".nav-links a");
+    if (page2Ref.current.getBoundingClientRect().top <= 200) {
+      navLinks.forEach((navLink) => {
+        navLink.classList.remove("active");
+      });
+      navLinks[1].className = "active";
+    } else {
+      navLinks.forEach((navLink) => {
+        navLink.classList.remove("active");
+      });
+      navLinks[0].className = "active";
+    }
+    if (page3Ref.current.getBoundingClientRect().top <= 200) {
+      navLinks.forEach((navLink) => {
+        navLink.classList.remove("active");
+      });
+      navLinks[2].className = "active";
+    }
+    if (page4Ref.current.getBoundingClientRect().top <= 200) {
+      navLinks.forEach((navLink) => {
+        navLink.classList.remove("active");
+      });
+      navLinks[3].className = "active";
+    }
+  });
   return (
     <>
       <Router>
@@ -19,11 +51,23 @@ function App() {
           </div>
           <Header />
           <main>
-            <Page1 />
-            <Page2 />
-            <Page3 />
-            <Page4 />
-            <WebgiViewer webgiGLB="scene (1).glb" />
+            <WebgiViewer
+              isModel={isModel}
+              setIsModel={setIsModel}
+              webgiGLB="scene (1).glb"
+            />
+            <div ref={page1Ref}>
+              <Page1 />
+            </div>
+            <div ref={page2Ref}>
+              <Page2 />
+            </div>
+            <div ref={page3Ref}>
+              <Page3 />
+            </div>
+            <div ref={page4Ref}>
+              <Page4 />
+            </div>
           </main>
         </div>
       </Router>

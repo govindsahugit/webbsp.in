@@ -81,6 +81,9 @@ const WebgiViewer = forwardRef((props, ref) => {
       }
     });
     memorizedScrollAnimation(position, target, isMobileOrTablet, onUpdate);
+
+    props.setIsModel(true);
+    // console.log(props.isModel);
   }, []);
 
   useEffect(() => {

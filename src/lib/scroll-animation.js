@@ -39,6 +39,22 @@ export const scrollAnimation = (position, target, isMobile, onUpdate) => {
         immediateRender: false,
       },
     })
+    .from(".nav-links div", {
+      opacity: 0,
+      y: -40,
+      delay: 2.5,
+      duration: 0.5,
+      stagger: 0.1,
+    })
+    .from(".logo-and-name", {
+      opacity: 0,
+      y: -50,
+      duration: 0.5,
+    })
+    .from(".Logo", {
+      opacity: 0,
+      duration: 0.8,
+    })
     .to(position, {
       x: !isMobile ? -0.4012417938 : 9.36,
       y: !isMobile ? 0.6641794251 : 10.95,

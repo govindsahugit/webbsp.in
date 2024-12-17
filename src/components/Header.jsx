@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Tilt } from "react-tilt";
 
 const Header = () => {
   const handleActiveLink = (ele) => {
@@ -8,8 +9,6 @@ const Header = () => {
       navLink.classList.remove("active");
     });
     ele.className = "active";
-    console.log(navLinks);
-    console.log(ele);
   };
 
   return (
@@ -21,34 +20,63 @@ const Header = () => {
         <a href="/">WEBBSP.IN</a>
       </div>
       <div className="nav-links">
-        <a className="active"
-          onClick={(e) => {
-            handleActiveLink(e.target);
-          }}
-          href={"#page1"}>
-          HOME
-        </a>
-        <a
-          onClick={(e) => {
-            handleActiveLink(e.target);
-          }}
-          href={"#page2"}>
-          AIM
-        </a>
-        <a
-          onClick={(e) => {
-            handleActiveLink(e.target);
-          }}
-          href={"#page3"}>
-          PROJECTS
-        </a>
-        <a
-          onClick={(e) => {
-            handleActiveLink(e.target);
-          }}
-          href={"#page4"}>
-          CONTACT
-        </a>
+        <Tilt
+          options={{
+            max: 45,
+            scale: 1.08,
+            speed: 450,
+          }}>
+          <a
+            className="active"
+            onClick={(e) => {
+              handleActiveLink(e.target);
+            }}
+            href={"#page1"}>
+            HOME
+          </a>
+        </Tilt>
+        <Tilt
+          options={{
+            max: 45,
+            scale: 1.08,
+            speed: 450,
+          }}>
+          <a
+            onClick={(e) => {
+              handleActiveLink(e.target);
+            }}
+            href={"#page2"}>
+            AIM
+          </a>
+        </Tilt>
+        <Tilt
+          options={{
+            max: 45,
+            scale: 1.08,
+            speed: 450,
+          }}>
+          <a
+            onClick={(e) => {
+              handleActiveLink(e.target);
+            }}
+            href={"#page3"}>
+            PROJECTS
+          </a>
+        </Tilt>
+        <Tilt
+          options={{
+            max: 45,
+            scale: 1.08,
+            speed: 450,
+          }}>
+          <a
+            onClick={(e) => {
+              handleActiveLink(e.target);
+            }}
+            href={"#page4"}>
+            CONTACT
+          </a>
+        </Tilt>
       </div>
     </nav>
   );
