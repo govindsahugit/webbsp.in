@@ -61,8 +61,8 @@ const WebgiViewer = forwardRef((props, ref) => {
     viewer.scene.activeCamera.setCameraOptions({ controlsEnabled: false });
 
     if (isMobileOrTablet) {
-      position.set(-16.7, 1.17, 11.7);
-      target.set(0, 1.37, 0);
+      position.set(7.0, 0.12, 0.06);
+      target.set(0.0, -0.05, -0.02);
     }
 
     window.scrollTo(0, 0);

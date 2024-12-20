@@ -10,7 +10,6 @@ const Header = () => {
     });
     ele.className = "active";
   };
-
   return (
     <nav id="nav">
       <div className="logo-and-name">
@@ -20,63 +19,42 @@ const Header = () => {
         <a href="/">WEBBSP.IN</a>
       </div>
       <div className="nav-links">
-        <Tilt
-          options={{
-            max: 45,
-            scale: 1.08,
-            speed: 450,
-          }}>
-          <a
-            className="active"
-            onClick={(e) => {
-              handleActiveLink(e.target);
-            }}
-            href={"#page1"}>
-            HOME
-          </a>
-        </Tilt>
-        <Tilt
-          options={{
-            max: 45,
-            scale: 1.08,
-            speed: 450,
-          }}>
-          <a
-            onClick={(e) => {
-              handleActiveLink(e.target);
-            }}
-            href={"#page2"}>
-            AIM
-          </a>
-        </Tilt>
-        <Tilt
-          options={{
-            max: 45,
-            scale: 1.08,
-            speed: 450,
-          }}>
-          <a
-            onClick={(e) => {
-              handleActiveLink(e.target);
-            }}
-            href={"#page3"}>
-            PROJECTS
-          </a>
-        </Tilt>
-        <Tilt
-          options={{
-            max: 45,
-            scale: 1.08,
-            speed: 450,
-          }}>
-          <a
-            onClick={(e) => {
-              handleActiveLink(e.target);
-            }}
-            href={"#page4"}>
-            CONTACT
-          </a>
-        </Tilt>
+        <a
+          className="active"
+          onClick={(e) => {
+            handleActiveLink(e.target);
+          }}
+          data-replace="HOME"
+          href={"#page1"}>
+          <span>HOME</span>
+        </a>
+
+        <a
+          onClick={(e) => {
+            handleActiveLink(e.target);
+          }}
+          data-replace="AIM"
+          href={"#page2"}>
+          <span>AIM</span>
+        </a>
+
+        <a
+          onClick={(e) => {
+            handleActiveLink(e.target);
+          }}
+          data-replace="PROJECTS"
+          href={"#page3"}>
+          <span>PROJECTS</span>
+        </a>
+
+        <a
+          onClick={(e) => {
+            handleActiveLink(e.target);
+          }}
+          data-replace="CONTACT"
+          href={"#page4"}>
+          <span>CONTACT</span>
+        </a>
       </div>
     </nav>
   );
