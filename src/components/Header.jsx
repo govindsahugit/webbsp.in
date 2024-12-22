@@ -1,6 +1,4 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Tilt } from "react-tilt";
 
 const Header = () => {
   const handleActiveLink = (ele) => {
@@ -10,6 +8,7 @@ const Header = () => {
     });
     ele.className = "active";
   };
+
   return (
     <nav id="nav">
       <div className="logo-and-name">

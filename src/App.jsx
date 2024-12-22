@@ -6,6 +6,7 @@ import Page3 from "./components/Page3";
 import Page4 from "./components/Page4";
 import Header from "./components/Header";
 import { BrowserRouter as Router } from "react-router-dom";
+import "./App.css";
 
 function App() {
   const [isModel, setIsModel] = useState(false);
@@ -44,11 +45,11 @@ function App() {
     <>
       <Router>
         <div className="App">
-          <div id="loader">
+          {/* <div id="loader">
             <div className="gif">
               <img src="./network.gif" alt="" />
             </div>
-          </div>
+          </div> */}
           <Header />
           <main>
             <WebgiViewer

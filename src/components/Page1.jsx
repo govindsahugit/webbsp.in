@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useRef } from "react";
+import { use } from "react";
 import { Link } from "react-router-dom";
 import { Tilt } from "react-tilt";
 
@@ -31,7 +32,9 @@ const Page1 = () => {
   }, []);
 
   return (
-    <div onMouseMove={window.scrollY === 0 ? handleMouseMove :  ""} id="page1">
+    <div
+      onMouseMove={window.scrollY === 0 ? handleMouseMove : () => {}}
+      id="page1">
       <div id="page1-in">
         <h1 ref={textRef} id="tilt-text">
           WEBBSP.IN
