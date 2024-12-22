@@ -109,21 +109,21 @@ export const scrollAnimation = (position, target, isMobile, onUpdate) => {
       },
     })
     .to(".samples", {
-      transform: "translateY(-70%)",
+      transform: "translateY(-100%)",
       scrollTrigger: {
         trigger: "#page3",
         start: "top top",
         end: "top -100%",
-        scrub: 2,
+        scrub: 0.5,
         immediateRender: false,
         pin: true,
       },
     })
 
     .to(position, {
-      x: !isMobile ? -2.4523251997 : -3.8528509628,
-      y: !isMobile ? -0.2191977853 : -0.1090825537,
-      z: !isMobile ? 0.0127888722 : 0.0612255442,
+      x: !isMobile ? -3.8528509628 : -3.8528509628,
+      y: !isMobile ? -0.1090825537 : -0.1090825537,
+      z: !isMobile ? 0.0612255442 : 0.0612255442,
       scrollTrigger: {
         trigger: "#page4",
         start: "top bottom",
@@ -134,9 +134,9 @@ export const scrollAnimation = (position, target, isMobile, onUpdate) => {
       onUpdate,
     })
     .to(target, {
-      x: !isMobile ? -0.2492344958 : -0.2361707519,
-      y: !isMobile ? -0.176438581 : -0.1512216172,
-      z: !isMobile ? -0.0128171744 : -0.0211799277,
+      x: !isMobile ? -0.2361707519 : -0.2361707519,
+      y: !isMobile ? -0.1512216172 : -0.1512216172,
+      z: !isMobile ? -0.0211799277 : -0.0211799277,
       scrollTrigger: {
         trigger: "#page4",
         start: "top bottom",

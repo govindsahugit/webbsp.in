@@ -5,9 +5,11 @@ const Page3 = () => {
     <div id="page3">
       <div className="sample-container">
         <div className="sample-projects">
-          <h1>WORK SAMPLES</h1>
           <div className="samples">
-            <div className="sample"></div>
+            <div className="sample-h1">
+              <h1>WORK </h1>
+              <h1>SAMPLES</h1>
+            </div>
             <div className="sample"></div>
             <div className="sample"></div>
             <div className="sample"></div>

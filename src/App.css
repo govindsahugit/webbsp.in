@@ -1,26 +1,26 @@
 /* media queries */
-
-@media (max-width: 600px) {
+@media (max-width: 1500px) {
   #page3 {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+}
 
-  .sample-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    margin-right: 0;
+@media (max-width: 600px) {
+  #page3 {
+    position: relative;
   }
 
-  .sample-projects {
-    max-width: 1000px;
-    height: 100%;
-    margin-right: unset;
-    border-radius: 20px;
-    overflow: hidden;
+  .sample-h1 {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .sample-container {
+    position: absolute;
+    bottom: 4%;
+    height: 70vh;
   }
 }
