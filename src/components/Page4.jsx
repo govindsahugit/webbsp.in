@@ -2,7 +2,11 @@ const Page4 = () => {
   return (
     <div id="page4">
       <div className="contact-links">
-        <a to={"#"} className="whatsapp-link">
+        <a
+          href={
+            "https://wa.me/917067738849?text=Hi, I want to discuss with you about your service."
+          }
+          className="whatsapp-link">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -20,7 +24,7 @@ const Page4 = () => {
           </svg>
           {/* <h2>INSTAGRAM</h2> */}
         </a>
-        <a to={"#"} className="email-link">
+        <a href={"mailTo:sahuji.0812@gmail.com"} className="email-link">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -31,7 +35,7 @@ const Page4 = () => {
         </a>
       </div>
       <div className="child">
-        <h1>GET IN TOUCH</h1>
+        <h1>DROP US A LINE</h1>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ handleMenuBar }) => {
   const handleActiveLink = (ele) => {
     const navLinks = document.querySelectorAll(".nav-links a");
     navLinks.forEach((navLink) => {
@@ -17,44 +17,52 @@ const Header = () => {
         </div>
         <a href="/">WEBBSP.IN</a>
       </div>
-      <div className="nav-links">
-        <a
-          className="active"
-          onClick={(e) => {
-            handleActiveLink(e.target);
-          }}
-          data-replace="HOME"
-          href={"#page1"}>
-          <span>HOME</span>
-        </a>
-
-        <a
-          onClick={(e) => {
-            handleActiveLink(e.target);
-          }}
-          data-replace="AIM"
-          href={"#page2"}>
-          <span>AIM</span>
-        </a>
-
-        <a
-          onClick={(e) => {
-            handleActiveLink(e.target);
-          }}
-          data-replace="PROJECTS"
-          href={"#page3"}>
-          <span>PROJECTS</span>
-        </a>
-
-        <a
-          onClick={(e) => {
-            handleActiveLink(e.target);
-          }}
-          data-replace="CONTACT"
-          href={"#page4"}>
-          <span>CONTACT</span>
-        </a>
-      </div>
+      {window.innerWidth <= 600 ? (
+        <div className="nav-menu" onClick={handleMenuBar}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor">
+            <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
+          </svg>
+        </div>
+      ) : (
+        <div className="nav-links">
+          <a
+            className="active"
+            onClick={(e) => {
+              handleActiveLink(e.target);
+            }}
+            data-replace="HOME"
+            href={"#page1"}>
+            <span>HOME</span>
+          </a>
+          <a
+            onClick={(e) => {
+              handleActiveLink(e.target);
+            }}
+            data-replace="AIM"
+            href={"#page2"}>
+            <span>AIM</span>
+          </a>
+          <a
+            onClick={(e) => {
+              handleActiveLink(e.target);
+            }}
+            data-replace="PROJECTS"
+            href={"#page3"}>
+            <span>PROJECTS</span>
+          </a>
+          <a
+            onClick={(e) => {
+              handleActiveLink(e.target);
+            }}
+            data-replace="CONTACT"
+            href={"#page4"}>
+            <span>CONTACT</span>
+          </a>
+        </div>
+      )}
     </nav>
   );
 };

@@ -2,25 +2,52 @@
 @media (max-width: 1500px) {
   #page3 {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+  }
+
+  .sample-container {
+    margin-inline: 4%;
+  }
+}
+
+@media (max-width: 1000px) {
+}
+
+@media (max-width: 780px) {
+  .samples {
+    gap: 2vw;
+  }
+
+  .sample {
+    flex-direction: column;
+  }
+
+  .sample-content h1 {
+    font-size: clamp(15px 5vw, 20px);
+  }
+
+  .sample-content p {
+    font-size: clamp(12px, 1.2vw, 16px);
   }
 }
 
 @media (max-width: 600px) {
-  #page3 {
-    position: relative;
+  #nav {
+    justify-content: space-between;
+    padding-inline: 14px;
   }
 
-  .sample-h1 {
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+  #page3 > div {
+    align-items: flex-end;
+    margin-bottom: 12px;
   }
 
-  .sample-container {
-    position: absolute;
-    bottom: 4%;
-    height: 70vh;
+  .samples {
+    gap: 2vw;
+  }
+
+  .contact-links {
+    top: 52%;
   }
 }

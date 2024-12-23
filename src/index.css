@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 html,
@@ -13,6 +14,7 @@ body {
   background-color: #b2aeab;
   position: relative;
   z-index: -3;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -57,8 +59,56 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  font-family: "Nunito";
+  font-family: "Nunito", sans-serif;
   z-index: 2;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.nav-menu {
+  height: 40px;
+  width: 40px;
+}
+
+.close-btn {
+  height: 80px;
+  width: 80px;
+}
+
+.close-btn svg {
+  color: #4e4e57;
+}
+
+.menu-links {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #d2d2d28d;
+  backdrop-filter: blur(5px);
+  height: 100vh;
+  width: 60%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-end;
+  padding: 50px;
+  transform: translateX(100%);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 30px;
+}
+
+.links a {
+  color: #26262a;
+  text-decoration: none;
+  border: none;
+  font-size: 30px;
+  font-family: "Nunito", sans-serif;
 }
 
 .logo {
@@ -200,68 +250,99 @@ body {
 .aim h1 {
   font-size: clamp(200px, 25vw, 500px);
   text-wrap: nowrap;
-  font-family: "Jockey One";
+  font-family: "Jockey One", sans-serif;
   color: #31313e9b;
 }
 
 .text-intro {
   min-width: min(500px, 90vw);
   font-size: clamp(16px, 3vw, 25px);
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   color: #363537af;
   font-weight: 400;
   padding-right: 30px;
 }
 
 #page3 {
+  position: relative;
   height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
+}
+
+#page3 > div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sample-container {
+  background-color: #dfdfdfb3;
   max-width: 1200px;
-  height: 75vh;
+  backdrop-filter: blur(3px);
+  height: 80%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 20px;
+  margin-right: 20px;
   overflow: hidden;
-}
-
-.sample-projects {
-  display: flex;
 }
 
 .samples {
   display: flex;
-  gap: clamp(5px, 2vw, 10px);
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 0 clamp(10px, 3vw, 30px);
+  gap: 1vw;
+  height: 100%;
   width: 100%;
+  padding-top: 500px;
 }
 
 .sample-h1 {
-  margin-top: 150px;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 300px;
-  width: min(1200px, 90vw);
-  margin-inline: 20px;
+  gap: 1vw;
 }
 
 .sample-h1 h1 {
-  color: #5d5c5f;
-  font-size: clamp(70px, 6vw, 150px);
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(20px, 6vw, 80px);
+  color: #4e4e57;
 }
 
 .sample {
-  height: 200px;
-  width: min(1200px, 90vw);
-  background-color: skyblue;
+  background-color: #d0d0d0a8;
   margin-inline: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  display: flex;
+}
+
+.sample-img img {
+  height: 100%;
+  width: 100%;
+}
+
+.sample-content {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+}
+
+.sample-content h1 {
+  color: #4e4e57;
+  font-size: clamp(15px 4vw, 20px);
+  font-family: "Roboto", sans-serif;
+}
+
+.sample-content p {
+  color: #707078;
+  font-size: clamp(12px, 1.2vw, 16px);
+  font-family: "Poppins", sans-serif;
 }
 
 #page4 {
@@ -277,7 +358,7 @@ body {
   position: relative;
   max-width: fit-content;
   padding-inline: clamp(0.5rem, 3vw, 1rem);
-  background-color: #c3c3c3;
+  background-color: #c7c7c7;
   border-radius: clamp(10px, 2vw, 20px);
   display: flex;
   align-items: center;
@@ -285,13 +366,14 @@ body {
   overflow: hidden;
   width: min(90vw, 100%);
   margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .child h1 {
-  font-size: clamp(50px, 10vw, 100px);
+  font-size: clamp(40px, 10vw, 100px);
   text-align: center;
   color: #707078;
-  font-family: "Nunito";
+  font-family: "Jockey One", sans-serif;
   display: inline-block;
 }
 
@@ -327,12 +409,15 @@ body {
   cursor: pointer;
   width: clamp(60px, 12vw, 100px);
   color: #2a292bc9;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* .contact-links svg:hover {
-  scale: 0.8;
-  color: #282729f5;
-} */
+@media (min-width: 1000px) {
+  .contact-links svg:hover {
+    color: #232332;
+    transform: translateY(-40px);
+  }
+}
 
 #tilt-text {
   color: #31313ed7;
