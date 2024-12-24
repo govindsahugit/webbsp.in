@@ -66,8 +66,8 @@ body {
 }
 
 .nav-menu {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 .close-btn {
@@ -92,7 +92,7 @@ body {
   flex-direction: column;
   gap: 40px;
   align-items: flex-end;
-  padding: 50px;
+  padding: clamp(25px, 6vw, 50px);
   transform: translateX(100%);
 }
 
@@ -100,7 +100,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin: 30px;
+  margin: clamp(15px, 4vw, 30px);
 }
 
 .links a {
@@ -178,33 +178,6 @@ body {
 .gif {
   height: 300px;
   width: 300px;
-}
-
-#loader {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  animation-name: fadeOut;
-  animation-duration: 0.3s;
-  animation-delay: 3s;
-  animation-fill-mode: forwards;
-  pointer-events: none;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
 }
 
 .gif img {
@@ -324,9 +297,16 @@ body {
 .sample-img img {
   height: 100%;
   width: 100%;
+  transition-duration: 0.25s;
+  cursor: pointer;
+}
+
+.sample-img img:hover {
+  scale: 0.98;
 }
 
 .sample-content {
+  width: 100%;
   margin: 15px;
   display: flex;
   flex-direction: column;
@@ -343,6 +323,22 @@ body {
   color: #707078;
   font-size: clamp(12px, 1.2vw, 16px);
   font-family: "Poppins", sans-serif;
+}
+
+.sample-content p span {
+  background-color: rgba(255, 255, 255, 0.702);
+  color: rgb(0, 136, 255);
+  padding: clamp(3px, 1vw, 5px);
+  padding-inline: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sample-content p span svg {
+  margin-left: 5px;
+  padding-top: 2px;
+  height: 15px;
+  width: 15px;
 }
 
 #page4 {
@@ -502,3 +498,43 @@ body {
 }
 
 /* ------------------------------------------ */
+
+#loader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333641;
+  background: #d5d5d4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+#ele {
+  background: 50% 100% / 50% 50% no-repeat
+    radial-gradient(ellipse at bottom, #454550, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 10vw;
+  font-family: "Jockey One", sans-serif;
+  animation: reveal 3000ms ease-in-out forwards 200ms,
+    glow 2500ms linear infinite 2000ms;
+}
+
+@keyframes reveal {
+  80% {
+    letter-spacing: 8px;
+  }
+  100% {
+    background-size: 300% 300%;
+  }
+}
+@keyframes glow {
+  40% {
+    text-shadow: 0 0 8px #454550;
+  }
+}

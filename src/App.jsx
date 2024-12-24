@@ -7,6 +7,7 @@ import Page4 from "./components/Page4";
 import Header from "./components/Header";
 import { BrowserRouter as Router } from "react-router-dom";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function App() {
   const [isModel, setIsModel] = useState(false);
@@ -60,14 +61,39 @@ function App() {
     });
   };
 
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    const navLinks = document.querySelectorAll(".nav-links a");
+    tl.to("#loader", {
+      opacity: 0,
+      duration: 1,
+      delay: 4,
+      display: "none",
+      ease: "power2.out",
+    });
+    tl.from(navLinks, {
+      opacity: 0,
+      y: -30,
+      stagger: 0.2,
+      duration: 0.8,
+      delay: 0.2,
+      ease: "power2.out",
+    });
+    tl.from(".logo-and-name", {
+      opacity: 0,
+      y: -30,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+  }, []);
+
   return (
     <>
       <Router>
         <div className="App">
           <div id="loader">
-            <div className="gif">
-              <img src="./network.gif" alt="" />
-            </div>
+            <div id="ele">BE DIGITAL</div>
           </div>
           <div ref={menuRef} className="menu-links">
             <div onClick={handleCloseBtn} ref={closeRef} className="close-btn">
@@ -84,7 +110,6 @@ function App() {
                   handleCloseBtn();
                   handleActiveLink(e.target);
                 }}
-                data-replace="HOME"
                 href={"#page1"}>
                 <span>HOME</span>
               </a>
@@ -93,7 +118,6 @@ function App() {
                   handleCloseBtn();
                   handleActiveLink(e.target);
                 }}
-                data-replace="AIM"
                 href={"#page2"}>
                 <span>AIM</span>
               </a>
@@ -102,7 +126,6 @@ function App() {
                   handleCloseBtn();
                   handleActiveLink(e.target);
                 }}
-                data-replace="PROJECTS"
                 href={"#page3"}>
                 <span>PROJECTS</span>
               </a>
@@ -111,7 +134,6 @@ function App() {
                   handleCloseBtn();
                   handleActiveLink(e.target);
                 }}
-                data-replace="CONTACT"
                 href={"#page4"}>
                 <span>CONTACT</span>
               </a>

@@ -15,7 +15,7 @@ const Page1 = () => {
     const newYVal = (clientY - y - height / 2) / 10;
 
     gsap.to(textRef.current, {
-      duration: 6,
+      duration: window.innerWidth < 1000 ? 1.1 : 6,
       transform: `rotateX(${-newYVal}deg) rotateY(${newXVal}deg)`,
       ease: "power2.out",
     });
@@ -23,8 +23,8 @@ const Page1 = () => {
 
   useGSAP(() => {
     gsap.to(".swiper div", {
-      y: 35,
-      duration: 1.5,
+      y: window.innerWidth <= 600 ? 22 : 35,
+      duration: window.innerWidth <= 600 ? 1 : 1.5,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",

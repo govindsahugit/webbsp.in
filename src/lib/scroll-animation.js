@@ -47,13 +47,6 @@ export const scrollAnimation = (position, target, isMobile, onUpdate) => {
         scrub: 2,
       },
     })
-    .from(".nav-links div", {
-      opacity: 0,
-      y: -40,
-      delay: 1,
-      duration: 0.5,
-      stagger: 0.1,
-    })
     .from(".aim h1", {
       opacity: 0,
       scrollTrigger: {
