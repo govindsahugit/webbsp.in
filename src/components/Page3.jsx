@@ -14,6 +14,12 @@ const Page3 = () => {
                 <h1>WORK </h1>
                 <h1>SAMPLES</h1>
               </div>
+              <h2 className="note-txt">
+                NOTE: Websites can take time to fully load, and some elements
+                may not load on a few devices because we are using 3D stuff that
+                takes time to load on a free website host. It won't happen when
+                you host your site on a fast server.{" "}
+              </h2>
               <div className="sample">
                 <div
                   className="sample-img"

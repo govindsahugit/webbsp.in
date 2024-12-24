@@ -292,6 +292,11 @@ body {
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   display: flex;
+  transition-duration: 0.2s;
+}
+
+.sample:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .sample-img img {
@@ -317,6 +322,13 @@ body {
   color: #4e4e57;
   font-size: clamp(15px 4vw, 20px);
   font-family: "Roboto", sans-serif;
+}
+
+.note-txt {
+  color: #4e4e57;
+  font-size: clamp(12px, 2vw, 20px);
+  font-weight: 500;
+  margin: clamp(10px, 2vw, 20px);
 }
 
 .sample-content p {
@@ -494,7 +506,7 @@ body {
 .active {
   font-weight: 900 !important;
   text-decoration: underline !important;
-  border-bottom: 1px solid rgba(27, 26, 26, 0.427);
+  border-bottom: 3px solid rgba(27, 26, 26, 0.427);
 }
 
 /* ------------------------------------------ */
