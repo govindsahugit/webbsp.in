@@ -15,7 +15,11 @@ const Page4 = () => {
           </svg>
           {/* <h2>WHATSAPP</h2> */}
         </a>
-        <a to={"#"} className="ig-link">
+        <a
+          href={
+            "https://www.instagram.com/webbsp.in/?igsh=MW9qdmZyZG9wcnVzNA%3D%3D#"
+          }
+          className="ig-link">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
