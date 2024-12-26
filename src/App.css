@@ -21,6 +21,7 @@
 
   .sample {
     flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
   .sample-content h1 {
@@ -56,7 +57,7 @@
   }
 
   .samples {
-    gap: 2vw;
+    gap: 3vw;
   }
 
   .contact-links {
