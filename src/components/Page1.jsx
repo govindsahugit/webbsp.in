@@ -24,7 +24,7 @@ const Page1 = () => {
   useGSAP(() => {
     gsap.to(".swiper div", {
       y: window.innerWidth <= 600 ? 12 : 35,
-      duration: window.innerWidth <= 600 ? 1 : 1.5,
+      duration: window.innerWidth <= 600 ? .6 : 1.5,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
