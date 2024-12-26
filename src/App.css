@@ -39,6 +39,12 @@
     height: 45px;
   }
 
+  #page1-in h1 {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   .logo {
     height: 40px;
     width: 40px;

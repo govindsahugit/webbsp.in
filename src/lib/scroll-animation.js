@@ -9,7 +9,7 @@ export const scrollAnimation = (position, target, isMobile, onUpdate) => {
     z: !isMobile ? -2.6940573787 : -4.909763079,
     scrollTrigger: {
       trigger: "#page2",
-      start: "top bottom",
+      start: `top ${window.innerWidth <= 600 ? "80%" : "bottom"}`,
       end: "top top",
       scrub: 2,
       immediateRender: false,
@@ -22,7 +22,7 @@ export const scrollAnimation = (position, target, isMobile, onUpdate) => {
       z: !isMobile ? -0.0182061929 : -0.0156105066,
       scrollTrigger: {
         trigger: "#page2",
-        start: "top bottom",
+        start: `top ${window.innerWidth <= 600 ? "80%" : "bottom"}`,
         end: "top top",
         scrub: 2,
         immediateRender: false,
@@ -33,7 +33,7 @@ export const scrollAnimation = (position, target, isMobile, onUpdate) => {
       opacity: 0,
       scrollTrigger: {
         trigger: "#page2",
-        start: "top bottom",
+        start: `top ${window.innerWidth <= 600 ? "80%" : "bottom"}`,
         end: "top top",
         scrub: 2,
       },
