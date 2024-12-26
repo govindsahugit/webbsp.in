@@ -7,7 +7,6 @@
 
 html,
 body {
-  height: 100%;
   width: 100%;
   font-family: sans-serif;
   color: #fff;
@@ -71,8 +70,8 @@ body {
 }
 
 .close-btn {
-  height: 80px;
-  width: 80px;
+  height: 40px;
+  width: 40px;
 }
 
 .close-btn svg {
@@ -107,7 +106,7 @@ body {
   color: #26262a;
   text-decoration: none;
   border: none;
-  font-size: 30px;
+  font-size: 20px;
   font-family: "Nunito", sans-serif;
 }
 

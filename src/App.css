@@ -35,8 +35,8 @@
 @media (max-width: 600px) {
   #nav {
     justify-content: space-between;
-    padding-inline: 14px;
-    height: 40px;
+    padding-inline: 15px;
+    height: 45px;
   }
 
   .logo {
