@@ -1,4 +1,10 @@
-import React, { forwardRef, useCallback, useEffect, useRef } from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   ViewerApp,
   AssetManagerPlugin,
@@ -21,6 +27,7 @@ gsap.registerPlugin(ScrollTrigger);
 const WebgiViewer = forwardRef((props, ref) => {
   const canvasRef = useRef(null);
   const canvasContainerRef = useRef(null);
+  const [loading, setLoading] = useState(true);
 
   const memorizedScrollAnimation = useCallback(
     (position, target, isMobile, onUpdate) => {
@@ -54,7 +61,29 @@ const WebgiViewer = forwardRef((props, ref) => {
 
     viewer.renderer.refreshPipeline();
 
-    await manager.addFromPath(props.webgiGLB);
+    // Add loading handler
+    manager.addEventListener("progress", (event) => {
+      const progress = (event.loaded / event.total) * 100;
+      if (progress === 100) {
+        setLoading(false);
+
+        // Add reload functionality to refresh the viewer
+        const handleReload = useCallback(() => {
+          window.location.reload();
+        }, []);
+        handleReload()
+        window.scrollTo(0, 0);
+      }
+      // You can use progress value to show loading percentage
+    });
+
+    try {
+      await manager.addFromPath(props.webgiGLB);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error loading 3D model:", error);
+      setLoading(false);
+    }
 
     viewer.getPlugin(TonemapPlugin).config.clipBackground = true;
 

@@ -47,26 +47,6 @@ export const scrollAnimation = (position, target, isMobile, onUpdate) => {
         scrub: 2,
       },
     })
-    .from(".aim h1", {
-      opacity: 0,
-      scrollTrigger: {
-        trigger: "#page2",
-        start: "top bottom",
-        end: "top top",
-        scrub: 2,
-      },
-    })
-    .to(".aim", {
-      transform: `translateX(-${window.innerWidth < 600 ? "100" : "100"}%)`,
-      scrollTrigger: {
-        trigger: "#page2",
-        scroller: "body",
-        start: "top 0%",
-        end: "top -200%",
-        scrub: 2,
-        pin: true,
-      },
-    })
     .to(position, {
       x: !isMobile ? -0.4012417938 : -0.2077779851,
       y: !isMobile ? 0.6641794251 : 0.0581925263,

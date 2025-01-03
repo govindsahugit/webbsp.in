@@ -41,6 +41,7 @@ const Page4 = () => {
       <div className="child">
         <h1>DROP US A LINE</h1>
       </div>
+      <div id="page-cover"></div>
     </div>
   );
 };

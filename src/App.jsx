@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import WebgiViewer from "./components/WebgiViewer";
 import Page1 from "./components/Page1";
 import Page2 from "./components/Page2";
@@ -11,55 +11,185 @@ import { useGSAP } from "@gsap/react";
 
 function App() {
   const [isModel, setIsModel] = useState(false);
+  const [scroll, setScroll] = useState(false);
+  const [highlight, setHighlight] = useState(false);
+  const [backPage, setBackPage] = useState("");
+  const [nextPage, setNextPage] = useState("");
+  const [nextPageLink, setNextPageLink] = useState("");
   const page1Ref = useRef();
   const page2Ref = useRef();
   const page3Ref = useRef();
   const page4Ref = useRef();
-  const menuRef = useRef();
-  const closeRef = useRef();
+  const navigateRef = useRef();
 
+  useEffect(() => {
+    if (window.innerWidth <= 600) {
+      if (!scroll) document.body.style.overflowY = "hidden";
+      else document.body.style.overflowY = "unset";
+    }
+  }, [scroll]);
+
+  const handleNavigator = (e) => {
+    navigateRef.current.style.opacity = 1;
+    navigateRef.current.style.zIndex = "3";
+  };
+
+  const handleNavigatorBack = (e) => {
+    navigateRef.current.style.zIndex = "unset";
+    navigateRef.current.style.opacity = 0;
+  };
+
+  const handleObserver = (targetEle, callBack) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            callBack();
+          }
+        });
+      },
+      {
+        root: null, // Use the viewport as the container
+        threshold: 0, // Trigger when even one pixel is visible
+      }
+    );
+    // Select the target page
+    const target = document.querySelector(targetEle);
+    // Start observing the target
+    observer.observe(target);
+  };
+
+  let lastScrollTop = 0;
   window.addEventListener("scroll", (e) => {
-    const navLinks = document.querySelectorAll(".nav-links a");
-    if (page2Ref.current.getBoundingClientRect().top <= 200) {
-      navLinks.forEach((navLink) => {
-        navLink.classList.remove("active");
-      });
-      navLinks[1].className = "active";
+    if (window.innerWidth > 600) {
+      const navLinks = document.querySelectorAll(".nav-links a");
+
+      if (page2Ref.current.getBoundingClientRect().top <= 200) {
+        navLinks.forEach((navLink) => {
+          navLink.classList.remove("active");
+        });
+        navLinks[1].className = "active";
+      } else {
+        navLinks.forEach((navLink) => {
+          navLink.classList.remove("active");
+        });
+        navLinks[0].className = "active";
+      }
+      if (page3Ref.current.getBoundingClientRect().top <= 200) {
+        navLinks.forEach((navLink) => {
+          navLink.classList.remove("active");
+        });
+        navLinks[2].className = "active";
+      }
+      if (page4Ref.current.getBoundingClientRect().top <= 200) {
+        navLinks.forEach((navLink) => {
+          navLink.classList.remove("active");
+        });
+        navLinks[3].className = "active";
+      }
     } else {
-      navLinks.forEach((navLink) => {
-        navLink.classList.remove("active");
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const rect2 = page2Ref.current.getBoundingClientRect();
+      const rect3 = page3Ref.current.getBoundingClientRect();
+      const rect4 = page4Ref.current.getBoundingClientRect();
+      const rect1 = page1Ref.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight + 200;
+
+      // Check if the bottom of page2 is within the viewport
+      if (rect2.bottom <= windowHeight && rect2.bottom > windowHeight - 100) {
+        setScroll(false);
+        setNextPage("PROJECTS");
+        setBackPage("");
+        setNextPageLink("page3");
+        handleNavigator();
+      }
+
+      if (
+        rect2.bottom >= windowHeight + 20 &&
+        rect2.bottom < windowHeight + 150
+      ) {
+        setScroll(true);
+        handleNavigatorBack();
+      }
+
+      if (
+        rect2.bottom <= windowHeight - 150 &&
+        rect2.bottom > windowHeight - 200
+      ) {
+        setScroll(true);
+        handleNavigatorBack();
+      }
+
+      if (scrollTop < lastScrollTop) {
+        if (
+          rect2.bottom <= windowHeight - 300 &&
+          rect2.bottom > windowHeight - 1100
+        ) {
+          setScroll(false);
+          handleNavigator();
+          setBackPage("page2");
+          setNextPageLink("page3");
+          setNextPage("PROJECTS");
+        }
+        if (
+          rect1.bottom <= windowHeight - 300 &&
+          rect1.bottom > windowHeight - 1100
+        ) {
+          setScroll(false);
+          handleNavigator();
+          setBackPage("page1");
+          setNextPageLink("page2");
+          setNextPage("DON'T BACK");
+        }
+      }
+
+      if (rect3.bottom <= windowHeight && rect3.bottom > windowHeight - 100) {
+        setScroll(false);
+        setNextPage("CONTACT US");
+        setBackPage("");
+        setNextPageLink("page4");
+        handleNavigator();
+      }
+
+      if (
+        rect3.bottom >= windowHeight + 50 &&
+        rect3.bottom < windowHeight + 100
+      ) {
+        setScroll(true);
+        handleNavigatorBack();
+      }
+
+      if (rect4.bottom <= windowHeight) {
+        const a = document.querySelectorAll(".navigator a");
+        a[1].style.opacity = 0;
+        setBackPage("page3");
+        setNextPageLink("page4");
+      } else {
+        const a = document.querySelectorAll(".navigator a");
+        a[1].style.opacity = 1;
+      }
+
+      if (
+        rect4.bottom >= windowHeight + 50 &&
+        rect4.bottom < windowHeight + 100
+      ) {
+        setScroll(true);
+        handleNavigatorBack();
+      }
+
+      if (window.scrollY === 0) {
+        setScroll(false);
+        handleNavigatorBack();
+      }
+
+      handleObserver(".child h1", () => {
+        setScroll(false);
+        handleNavigator();
       });
-      navLinks[0].className = "active";
-    }
-    if (page3Ref.current.getBoundingClientRect().top <= 200) {
-      navLinks.forEach((navLink) => {
-        navLink.classList.remove("active");
-      });
-      navLinks[2].className = "active";
-    }
-    if (page4Ref.current.getBoundingClientRect().top <= 200) {
-      navLinks.forEach((navLink) => {
-        navLink.classList.remove("active");
-      });
-      navLinks[3].className = "active";
+
+      lastScrollTop = scrollTop;
     }
   });
-
-  const handleMenuBar = (e) => {
-    gsap.to(menuRef.current, {
-      transform: "translateX(0%)",
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  };
-
-  const handleCloseBtn = () => {
-    gsap.to(menuRef.current, {
-      transform: "translateX(100%)",
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  };
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -92,65 +222,57 @@ function App() {
     <>
       <Router>
         <div className="App">
-          <div id="loader">
-            <div id="ele">BE DIGITAL</div>
-          </div>
-          <div ref={menuRef} className="menu-links">
-            <div onClick={handleCloseBtn} ref={closeRef} className="close-btn">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor">
-                <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path>
-              </svg>
-            </div>
-            <div className="links">
+          {window.innerWidth <= 900 ? (
+            <div ref={navigateRef} className="navigator">
               <a
-                onClick={(e) => {
-                  handleCloseBtn();
-                  handleActiveLink(e.target);
+                onClick={() => {
+                  setTimeout(
+                    () => {
+                      window.scrollTo({
+                        top: window.scrollY - 600,
+                        behavior: "smooth",
+                      });
+                      handleNavigatorBack();
+                    },
+                    backPage === "back" ? 1 : 1500
+                  );
                 }}
-                href={"#page1"}>
-                <span>HOME</span>
+                href={`#back${backPage}`}>
+                <span>BACK</span>
+                <i className="ri-arrow-up-line"></i>
               </a>
               <a
-                onClick={(e) => {
-                  handleCloseBtn();
-                  handleActiveLink(e.target);
+                onClick={() => {
+                  setScroll(true);
+                  handleNavigatorBack();
                 }}
-                href={"#page2"}>
-                <span>AIM</span>
-              </a>
-              <a
-                onClick={(e) => {
-                  handleCloseBtn();
-                  handleActiveLink(e.target);
-                }}
-                href={"#page3"}>
-                <span>PROJECTS</span>
-              </a>
-              <a
-                onClick={(e) => {
-                  handleCloseBtn();
-                  handleActiveLink(e.target);
-                }}
-                href={"#page4"}>
-                <span>CONTACT</span>
+                href={`#${nextPageLink}`}>
+                <span>{nextPage}</span>
+                <i className="ri-arrow-down-line"></i>
               </a>
             </div>
-          </div>
-          <Header handleMenuBar={handleMenuBar} />
-          <main onClick={handleCloseBtn}>
+          ) : (
+            <span></span>
+          )}
+          {/* <div id="loader">
+              <div id="ele">BE DIGITAL</div>
+            </div> */}
+          <Header />
+          <main id="main">
             <WebgiViewer
               isModel={isModel}
               setIsModel={setIsModel}
               webgiGLB="scene (1).glb"
             />
             <div ref={page1Ref}>
-              <Page1 />
+              <Page1
+                highlight={highlight}
+                setHighlight={setHighlight}
+                setScroll={setScroll}
+              />
             </div>
             <div ref={page2Ref}>
-              <Page2 />
+              <Page2 setScroll={setScroll} />
             </div>
             <div ref={page3Ref}>
               <Page3 />
