@@ -254,9 +254,9 @@ function App() {
           ) : (
             <span></span>
           )}
-          {/* <div id="loader">
+          <div id="loader">
               <div id="ele">BE DIGITAL</div>
-            </div> */}
+            </div>
           <Header />
           <main id="main">
             <WebgiViewer
