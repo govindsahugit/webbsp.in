@@ -1,78 +1,18 @@
-/* media queries */
-@media (max-width: 1500px) {
-  #page3 {
+@media (max-width: 1000px) {
+  .mobile {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    width: 100vw;
+    z-index: 10;
+    background-color: #1a1919;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
   }
 
-  .sample-container {
-    margin-inline: 4%;
-  }
-}
-
-@media (max-width: 1000px) {
-}
-
-@media (max-width: 780px) {
-  .samples {
-    gap: 2vw;
-  }
-
-  .sample {
-    flex-direction: column;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-
-  .sample-content h1 {
-    font-size: clamp(15px 5vw, 20px);
-  }
-
-  .sample-content p {
-    font-size: clamp(12px, 1.2vw, 16px);
-    width: 92%;
-  }
-}
-
-@media (max-width: 600px) {
-  #nav {
-    justify-content: space-between;
-    padding-inline: 15px;
-    height: 45px;
-    background-color: transparent;
-  }
-
-  .logo {
-    height: 40px;
-    width: 40px;
-  }
-
-  .logo-and-name a {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  #page3 > div {
-    align-items: flex-end;
-    margin-bottom: 12px;
-  }
-
-  .samples {
-    gap: 3vw;
-  }
-
-  .contact-links {
-    top: 52%;
-  }
-
-  .swiper {
-    height: 42px;
-    width: 22px;
-    border: 3px solid #31313eab;
-  }
-
-  .swiper div {
-    height: 9px;
-    width: 8px;
+  .mobile h4 {
+    text-align: center;
   }
 }
